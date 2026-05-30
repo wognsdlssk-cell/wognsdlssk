@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>곽재훈 · 퍼포먼스 마케터</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --black:#0a0a0a;
+  --dark:#1c1c1c;
+  --mid:#555;
+  --muted:#888;
+  --light:#bbb;
+  --border:#e8e8e8;
+  --bg:#ffffff;
+  --bg2:#f8f8f8;
+  --bg3:#f2f2f2;
+  --accent:#111;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--dark);line-height:1.6;font-size:15px;-webkit-font-smoothing:antialiased}
+
+/* ── NAV ── */
+nav{
+  position:sticky;top:0;z-index:100;
+  background:rgba(255,255,255,0.96);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 6%;height:60px;
+}
+.nav-logo{font-weight:900;font-size:15px;letter-spacing:0.06em;color:var(--black);text-decoration:none}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{font-size:12px;color:var(--muted);text-decoration:none;letter-spacing:0.04em;transition:color .2s}
+.nav-links a:hover{color:var(--black)}
+@media(max-width:680px){.nav-links{display:none}}
+
+/* ── HERO ── */
+.hero{
+  display:grid;grid-template-columns:1fr 1fr;
+  min-height:94vh;
+  border-bottom:1px solid var(--border);
+}
+.hero-img{
+  position:relative;overflow:hidden;
+}
+.hero-img img{
+  width:100%;height:100%;
+  object-fit:cover;object-position:center top;
+  display:block;
+}
+.hero-img-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to right, rgba(0,0,0,0.18) 0%, transparent 60%);
+}
+.hero-content{
+  display:flex;flex-direction:column;justify-content:center;
+  padding:60px 6% 60px 5%;
+  border-left:1px solid var(--border);
+}
+.hero-eyebrow{
+  font-size:11px;letter-spacing:0.16em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:20px;
+}
+.hero-name{
+  font-family:'Noto Serif KR',serif;
+  font-size:clamp(38px,5vw,64px);font-weight:700;
+  color:var(--black);line-height:1.1;
+  margin-bottom:6px;letter-spacing:-0.02em;
+}
+.hero-title{
+  font-size:16px;color:var(--muted);font-weight:300;
+  margin-bottom:32px;letter-spacing:0.04em;
+}
+.hero-desc{
+  font-size:15px;color:var(--mid);line-height:1.9;
+  margin-bottom:40px;word-break:keep-all;
+  max-width:420px;
+}
+.hero-desc strong{color:var(--black);font-weight:700}
+.hero-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:40px}
+.hero-tag{
+  font-size:11px;padding:5px 13px;
+  border:1px solid var(--border);color:var(--muted);
+  background:var(--bg2);letter-spacing:0.04em;
+}
+.hero-tag.on{background:var(--black);color:#fff;border-color:var(--black)}
+.hero-stats{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  border:1px solid var(--border);
+  margin-top:8px;
+}
+.hstat{
+  padding:18px 12px;text-align:center;
+  border-right:1px solid var(--border);
+}
+.hstat:last-child{border-right:none}
+.hstat-num{display:block;font-size:20px;font-weight:900;color:var(--black);letter-spacing:-0.02em}
+.hstat-label{font-size:10px;color:var(--muted);margin-top:3px;letter-spacing:0.04em}
+
+/* ── SECTION COMMON ── */
+section{padding:96px 6%;border-bottom:1px solid var(--border)}
+.sec-label{font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.sec-title{
+  font-family:'Noto Serif KR',serif;
+  font-size:clamp(22px,3vw,36px);font-weight:700;
+  color:var(--black);line-height:1.35;margin-bottom:14px;word-break:keep-all;
+}
+.sec-sub{font-size:14px;color:var(--muted);line-height:1.85;max-width:540px;word-break:keep-all;margin-bottom:56px}
+
+/* ── YEJI SECTION ── */
+.yeji-intro{
+  display:grid;grid-template-columns:1fr 1fr;gap:0;
+  border:1px solid var(--border);margin-bottom:40px;
+}
+.yeji-left{
+  padding:48px 44px;
+  background:var(--black);color:#fff;
+}
+.yeji-left h3{
+  font-family:'Noto Serif KR',serif;
+  font-size:22px;font-weight:700;color:#fff;
+  margin-bottom:20px;line-height:1.4;
+}
+.yeji-kpi-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:1px;
+  background:rgba(255,255,255,0.12);margin-bottom:28px;
+}
+.yeji-kpi{
+  background:rgba(255,255,255,0.05);
+  padding:18px 16px;
+}
+.yeji-kpi-num{font-size:24px;font-weight:900;color:#fff;display:block;letter-spacing:-0.02em}
+.yeji-kpi-label{font-size:11px;color:rgba(255,255,255,0.5);margin-top:4px;letter-spacing:0.04em}
+.yeji-badges{display:flex;flex-wrap:wrap;gap:6px}
+.yeji-badge{
+  font-size:16px;padding:6px 18px;
+  border:1px solid rgba(255,255,255,0.2);
+  color:rgba(255,255,255,0.7);
+}
+.yeji-right{
+  display:grid;grid-template-columns:1fr 1fr;
+  border-left:1px solid var(--border);
+}
+.yeji-award-img{
+  position:relative;overflow:hidden;
+  border-right:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+}
+.yeji-award-img:nth-child(2n){border-right:none}
+.yeji-award-img:nth-last-child(-n+2){border-bottom:none}
+.yeji-award-img img{
+  width:100%;height:260px;
+  object-fit:cover;display:block;
+  transition:transform .4s ease;
+}
+.yeji-award-img:hover img{transform:scale(1.04)}
+.yeji-award-caption{
+  padding:10px 12px;
+  font-size:11px;color:var(--muted);
+  background:var(--bg2);border-top:1px solid var(--border);
+  line-height:1.4;
+}
+
+/* ── MY ACHIEVEMENTS ── */
+.achieve-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  border:1px solid var(--border);
+  margin-bottom:40px;
+}
+.achieve-card{
+  padding:32px 28px;
+  border-right:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  transition:background .2s;
+}
+.achieve-card:hover{background:var(--bg2)}
+.achieve-card:nth-child(3n){border-right:none}
+.achieve-card:nth-last-child(-n+3){border-bottom:none}
+.achieve-tag{
+  font-size:10px;letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:12px;
+}
+.achieve-num{
+  font-size:32px;font-weight:900;color:var(--black);
+  letter-spacing:-0.03em;line-height:1;margin-bottom:8px;
+}
+.achieve-desc{font-size:13px;color:var(--mid);line-height:1.6;word-break:keep-all}
+
+.awards-photo-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:0;border:1px solid var(--border);
+}
+.award-photo-item{
+  position:relative;overflow:hidden;
+  border-right:1px solid var(--border);
+}
+.award-photo-item:last-child{border-right:none}
+.award-photo-item img{
+  width:100%;aspect-ratio:3/4;
+  object-fit:cover;display:block;
+  transition:transform .4s ease;
+  filter:grayscale(15%);
+}
+.award-photo-item:hover img{transform:scale(1.05);filter:grayscale(0%)}
+.award-photo-caption{
+  padding:10px 12px;
+  font-size:11px;color:var(--muted);
+  background:var(--bg2);
+  border-top:1px solid var(--border);
+  line-height:1.4;
+}
+
+/* ── RANK TABLE ── */
+.rank-wrap{
+  border:1px solid var(--border);
+  overflow:hidden;margin-bottom:40px;
+}
+.rank-header{
+  background:var(--black);color:#fff;
+  padding:20px 28px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.rank-header h3{font-size:14px;font-weight:700;letter-spacing:0.04em}
+.rank-header span{font-size:11px;color:rgba(255,255,255,0.5)}
+.rank-img{width:100%;display:block;border-top:1px solid var(--border)}
+
+/* ── CERTS ── */
+.cert-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  border:1px solid var(--border);
+}
+.cert-item{
+  padding:32px 28px;
+  border-right:1px solid var(--border);
+  display:flex;flex-direction:column;gap:12px;
+}
+.cert-item:last-child{border-right:none}
+.cert-icon{
+  width:48px;height:48px;
+  background:var(--black);color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-size:14px;font-weight:700;
+}
+.cert-item h4{font-size:15px;font-weight:700;color:var(--black)}
+.cert-item p{font-size:12px;color:var(--muted);line-height:1.6}
+.cert-date{
+  font-size:11px;color:var(--muted);
+  border-top:1px solid var(--border);
+  padding-top:10px;margin-top:auto;
+}
+
+/* ── FREELANCE / PARKGOLF ── */
+.work-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:0;
+  border:1px solid var(--border);
+}
+.work-item{
+  padding:44px 40px;
+  border-right:1px solid var(--border);
+}
+.work-item:last-child{border-right:none}
+.work-badge{
+  display:inline-block;
+  font-size:11px;padding:4px 12px;margin-bottom:20px;
+  border:1px solid var(--border);color:var(--muted);
+  letter-spacing:0.06em;
+}
+.work-item h3{
+  font-family:'Noto Serif KR',serif;
+  font-size:20px;font-weight:700;color:var(--black);
+  margin-bottom:16px;line-height:1.4;word-break:keep-all;
+}
+.work-item p{font-size:14px;color:var(--mid);line-height:1.8;word-break:keep-all;margin-bottom:20px}
+.work-metrics{display:flex;flex-direction:column;gap:8px}
+.work-metric{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:10px 14px;background:var(--bg2);border:1px solid var(--border);
+}
+.work-metric-label{font-size:12px;color:var(--muted)}
+.work-metric-val{font-size:13px;font-weight:700;color:var(--black)}
+.work-metric-val.highlight{color:#166534}
+
+/* ── CLOSING ── */
+.closing{
+  background:var(--black);color:#fff;
+  padding:80px 6%;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:40px;
+  border-bottom:none;
+}
+.closing-left h2{
+  font-family:'Noto Serif KR',serif;
+  font-size:clamp(24px,3vw,38px);font-weight:700;
+  color:#fff;line-height:1.4;margin-bottom:16px;word-break:keep-all;
+}
+.closing-left p{font-size:14px;color:rgba(255,255,255,0.55);line-height:1.8;max-width:480px;word-break:keep-all}
+.closing-right{flex-shrink:0}
+.closing-photo{
+  width:200px;height:280px;object-fit:cover;
+  object-position:center top;
+  border:2px solid rgba(255,255,255,0.15);
+  display:block;
+}
+
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr}
+  .hero-img{height:50vw;min-height:260px}
+  .yeji-intro{grid-template-columns:1fr}
+  .yeji-right{border-left:none;border-top:1px solid var(--border)}
+  .achieve-grid{grid-template-columns:1fr 1fr}
+  .achieve-card:nth-child(2n){border-right:none}
+  .achieve-card:nth-child(3n){border-right:1px solid var(--border)}
+  .awards-photo-grid{grid-template-columns:1fr 1fr}
+  .award-photo-item:nth-child(2n){border-right:none}
+  .cert-grid{grid-template-columns:1fr}
+  .cert-item{border-right:none;border-bottom:1px solid var(--border)}
+  .cert-item:last-child{border-bottom:none}
+  .work-grid{grid-template-columns:1fr}
+  .work-item{border-right:none;border-bottom:1px solid var(--border)}
+  .closing{flex-direction:column}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">퍼포먼스 마케터 곽재훈 페이지</a>
+  <ul class="nav-links">
+    <li><a href="#yeji">예지솔루션</a></li>
+    <li><a href="#achievements">성과</a></li>
+    <li><a href="#certs">자격증</a></li>
+    <li><a href="#freelance">프리랜서</a></li>
+  </ul>
+</nav>
+
+<!-- ── HERO ── -->
+<div class="hero">
+  <div class="hero-img">
+    <img src="hero.jpg" alt="곽재훈 마케터 강연">
+    <div class="hero-img-overlay"></div>
+  </div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Performance Marketer · 8년차</p>
+    <h1 class="hero-name">곽재훈</h1>
+    <p class="hero-title">퍼포먼스 마케터</p>
+    <p class="hero-desc">
+      국내 탑 광고 대행사 <strong>예지솔루션</strong>에서 8년간<br>
+      네이버·카카오·쿠팡 및 각종 버티컬 매체를 직접 운영하며<br>
+      <strong>연간 광고집행액 40억+ 압도적 1위</strong> 및 영업 성과 최상위권을 유지했습니다.<br><br>
+      숫자로 증명된 마케터입니다.
+    </p>
+    <div class="hero-tags">
+      <span class="hero-tag on">예지솔루션 유일한 공식 프리랜서</span>
+      <span class="hero-tag">검색광고마케터 1급</span>
+      <span class="hero-tag">SNS마케터 1급</span>
+      <span class="hero-tag">구글 GAIQ</span>
+    </div>
+    <div class="hero-stats">
+      <div class="hstat">
+        <span class="hstat-num">8년차</span>
+        <p class="hstat-label">현장 8년차</p>
+      </div>
+      <div class="hstat">
+        <span class="hstat-num">40억+</span>
+        <p class="hstat-label">연간 집행액</p>
+      </div>
+      <div class="hstat">
+        <span class="hstat-num">1위</span>
+        <p class="hstat-label">사내 매출 순위</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── YEJI SOLUTION ── -->
+<section id="yeji">
+  <p class="sec-label">BACKGROUND</p>
+  <h2 class="sec-title">국내 최정상 광고 대행사,<br>예지솔루션에서 8년</h2>
+  <p class="sec-sub">단순히 경력을 쌓은 게 아닙니다. 직원 200여 명, 연매출 900억의 공식 대행사에서 현장의 최전선을 경험했습니다.</p>
+
+  <div class="yeji-intro">
+    <div class="yeji-left">
+      <h3>예지솔루션은<br>이런 회사입니다</h3>
+      <div class="yeji-kpi-grid">
+        <div class="yeji-kpi">
+          <span class="yeji-kpi-num">200+</span>
+          <p class="yeji-kpi-label">임직원 수</p>
+        </div>
+        <div class="yeji-kpi">
+          <span class="yeji-kpi-num">900억</span>
+          <p class="yeji-kpi-label">연 매출</p>
+        </div>
+        <div class="yeji-kpi">
+          <span class="yeji-kpi-num">10+</span>
+          <p class="yeji-kpi-label">공식 대행 매체</p>
+        </div>
+        <div class="yeji-kpi">
+          <span class="yeji-kpi-num">TOP</span>
+          <p class="yeji-kpi-label">네이버 프리미어</p>
+        </div>
+      </div>
+      <div class="yeji-badges">
+        <span class="yeji-badge">네이버 공식대행사</span>
+        <span class="yeji-badge">카카오 공식대행사</span>
+        <span class="yeji-badge">쿠팡 공식대행사</span>
+        <span class="yeji-badge">네이버 프리미어 파트너</span>
+        <span class="yeji-badge">지그재그 프리미어 에이전시</span>
+        <span class="yeji-badge">에이블리 우수대행사</span>
+        <span class="yeji-badge">지마켓 공식대행사</span>
+        <span class="yeji-badge">구글 파트너사</span>
+        <span class="yeji-badge">11번가 공식대행사</span>
+        <span class="yeji-badge">오늘의집 공식대행사</span>
+      </div>
+    </div>
+    <div class="yeji-right">
+      <div class="yeji-award-img">
+        <img src="award_naver_premier.png" alt="2026 네이버 프리미어 파트너사 선정">
+        <div class="yeji-award-caption">2026 네이버 프리미어 파트너사 선정</div>
+      </div>
+      <div class="yeji-award-img">
+        <img src="award_zigzag_premier.jpg" alt="2024 지그재그 프리미어 에이전시">
+        <div class="yeji-award-caption">2024·2025 지그재그 프리미어 에이전시</div>
+      </div>
+      <div class="yeji-award-img">
+        <img src="award_ably.jpg" alt="에이블리 우수대행사 선정">
+        <div class="yeji-award-caption">에이블리 우수대행사 선정</div>
+      </div>
+      <div class="yeji-award-img">
+        <img src="award_zigzag_perf.jpg" alt="지그재그 광고 효율 퍼포먼스 TOP5">
+        <div class="yeji-award-caption">지그재그 광고 효율 퍼포먼스 TOP5</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 추가 수상 이미지들 -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--border);border-top:none">
+    <div style="border-right:1px solid var(--border);overflow:hidden">
+      <img src="award_zigzag_care.png" alt="지그재그 신규광고주 케어 TOP3" style="width:100%;height:300px;object-fit:cover;display:block">
+      <div class="yeji-award-caption">지그재그 신규 광고주 케어 부문 TOP3</div>
+    </div>
+    <div style="overflow:hidden">
+      <img src="award_ably2026.png" alt="2026 에이블리 우수대행사" style="width:100%;height:300px;object-fit:cover;display:block">
+      <div class="yeji-award-caption">2026 에이블리 우수대행사 선정</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ACHIEVEMENTS ── -->
+<section id="achievements">
+  <p class="sec-label">ACHIEVEMENTS</p>
+  <h2 class="sec-title">숫자로 증명한<br>8년의 기록</h2>
+  <p class="sec-sub">각종 프로모션 성과 최상위권 유지, 연간 시상식 주요 부문 수상. 모든 성과는 실제 데이터 기반입니다.</p>
+
+  <div class="achieve-grid">
+    <div class="achieve-card">
+      <p class="achieve-tag">ANNUAL AD SPEND</p>
+      <p class="achieve-num">40억+</p>
+      <p class="achieve-desc">연간 광고집행액 기준 사내 압도적 1위. 지속적으로 유지한 개인 최고 기록입니다.</p>
+    </div>
+    <div class="achieve-card">
+      <p class="achieve-tag">SALES RANKING</p>
+      <p class="achieve-num">#1</p>
+      <p class="achieve-desc">영업 성과 기준 솔루션 TOP10 정산매출 1위 (96,044,068원). 2위와의 격차만 약 3천만원입니다.</p>
+    </div>
+    <div class="achieve-card">
+      <p class="achieve-tag">AWARDS</p>
+      <p class="achieve-num">다수</p>
+      <p class="achieve-desc">라이징 스타, Excellent Staff, BEST PROMOTION, HO캉스 성과우수자 등 연간 시상식 주요 부문 수상.</p>
+    </div>
+    <div class="achieve-card">
+      <p class="achieve-tag">EDUCATION</p>
+      <p class="achieve-num">교육 담당</p>
+      <p class="achieve-desc">신규 수습사원 교육 담당자로서 실무 지식 전달 및 온보딩 프로세스 운영.</p>
+    </div>
+    <div class="achieve-card">
+      <p class="achieve-tag">TASK FORCE</p>
+      <p class="achieve-num">TF팀</p>
+      <p class="achieve-desc">버티컬 매체 TF팀 운영을 통해 신규 매체 확장 및 운영 체계 구축에 기여.</p>
+    </div>
+    <div class="achieve-card">
+      <p class="achieve-tag">FREELANCER</p>
+      <p class="achieve-num">유일</p>
+      <p class="achieve-desc">현재 예지솔루션의 유일한 공식 프리랜서로 활동 중. 신뢰와 실력으로 만든 포지션.</p>
+    </div>
+  </div>
+
+  <!-- 매출 1위 캡처 -->
+  <div class="rank-wrap">
+    <div class="rank-header">
+      <h3>관리직 전환 후에도 영업 성과 최상위권 유지</h3>
+      <span>곽재훈 · 네이버사업부 · 1위</span>
+    </div>
+    <img src="rank_top10.png" alt="솔루션 TOP10 매출 순위" class="rank-img">
+  </div>
+
+  <!-- 수상 사진 갤러리 -->
+  <div class="awards-photo-grid">
+    <div class="award-photo-item">
+      <img src="award_best_promotion.jpg" alt="BEST PROMOTION 수상">
+      <div class="award-photo-caption">버티컬 TF팀 운영</div>
+    </div>
+    <div class="award-photo-item">
+      <img src="awards_ceremony.jpg" alt="2019 FL.Y Awards 라이징 스타">
+      <div class="award-photo-caption">2019 FL.Y Awards 라이징 스타 수상</div>
+    </div>
+    <div class="award-photo-item">
+      <img src="award_excellent.jpg" alt="Excellent Staff 2022">
+      <div class="award-photo-caption">HO캉스 프로모션 성과우수자 선정</div>
+    </div>
+    <div class="award-photo-item">
+      <img src="award_hocance.jpg" alt="HO캉스 프로모션 성과우수자" style="width:100%;aspect-ratio:3/4;object-fit:cover;display:block">
+      <div class="award-photo-caption">Excellent Staff 2022 수상</div>
+    </div>
+  </div>
+  <!-- 추가 수상 사진 갤러리 -->
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--border);border-top:none">
+    <div style="overflow:hidden;border-right:1px solid var(--border)">
+      <img src="extra1.png" alt="오그레맨 수상" style="width:100%;aspect-ratio:3/4;object-fit:cover;display:block;transition:transform .4s">
+      <div style="padding:10px 12px;font-size:11px;color:var(--muted);background:var(--bg2);border-top:1px solid var(--border)">제13대 오그레맨 수상</div>
+    </div>
+    <div style="overflow:hidden;border-right:1px solid var(--border)">
+      <img src="extra2.jpg" alt="라이징 스타 트로피" style="width:100%;aspect-ratio:3/4;object-fit:cover;display:block;transition:transform .4s">
+      <div style="padding:10px 12px;font-size:11px;color:var(--muted);background:var(--bg2);border-top:1px solid var(--border)">2019 라이징 스타 트로피</div>
+    </div>
+    <div style="overflow:hidden;border-right:1px solid var(--border)">
+      <img src="extra3.jpg" alt="라이징 스타 트로피 클로즈업" style="width:100%;aspect-ratio:3/4;object-fit:cover;display:block;transition:transform .4s">
+      <div style="padding:10px 12px;font-size:11px;color:var(--muted);background:var(--bg2);border-top:1px solid var(--border)">라이징 스타 · 곽재훈 사원</div>
+    </div>
+    <div style="overflow:hidden">
+      <img src="extra4.jpg" alt="수상 모음" style="width:100%;aspect-ratio:3/4;object-fit:cover;display:block;transition:transform .4s">
+      <div style="padding:10px 12px;font-size:11px;color:var(--muted);background:var(--bg2);border-top:1px solid var(--border)">각종 수상 모음</div>
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--border);border-top:none">
+    <div style="overflow:hidden;border-right:1px solid var(--border)">
+      <img src="extra5.jpg" alt="수상 및 명찰" style="width:100%;aspect-ratio:3/4;object-fit:cover;display:block;transition:transform .4s">
+      <div style="padding:10px 12px;font-size:11px;color:var(--muted);background:var(--bg2);border-top:1px solid var(--border)">승급 및 수상 기록</div>
+    </div>
+    <div style="overflow:hidden;border-right:1px solid var(--border)">
+      <img src="extra6.jpg" alt="성과 TOP10 및 수상" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:left center;display:block;transition:transform .4s">
+      <div style="padding:10px 12px;font-size:11px;color:var(--muted);background:var(--bg2);border-top:1px solid var(--border)">솔루션 TOP10 · BEST PROMOTION</div>
+    </div>
+    <div style="overflow:hidden;border-right:1px solid var(--border)">
+      <img src="extra7.jpg" alt="BEST PROMOTION 수상" style="width:100%;aspect-ratio:3/4;object-fit:cover;display:block;transition:transform .4s">
+      <div style="padding:10px 12px;font-size:11px;color:var(--muted);background:var(--bg2);border-top:1px solid var(--border)">BEST PROMOTION BEST YES m & r 수상</div>
+    </div>
+    <div style="overflow:hidden">
+      <img src="extra8.png" alt="궁금한 톱스타" style="width:100%;aspect-ratio:3/4;object-fit:cover;display:block;transition:transform .4s">
+      <div style="padding:10px 12px;font-size:11px;color:var(--muted);background:var(--bg2);border-top:1px solid var(--border)">궁금한 톱스타 수상</div>
+    </div>
+  </div>
+
+  <!-- ON:AIR 강의 -->
+  <div style="margin-top:40px;display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--border)">
+    <div style="padding:36px 36px;display:flex;flex-direction:column;justify-content:center;border-right:1px solid var(--border)">
+      <p style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:12px">CONTENT · EDUCATION</p>
+      <h3 style="font-family:'Noto Serif KR',serif;font-size:20px;font-weight:700;color:var(--black);margin-bottom:12px;line-height:1.4">사내 교육 콘텐츠 제작<br>및 강의 진행</h3>
+      <p style="font-size:13px;color:var(--mid);line-height:1.8;word-break:keep-all">영업부 셀장 및 주요 TF팀 팀장으로 참여.</p>
+    </div>
+    <div style="overflow:hidden">
+      <img src="onair.png" alt="ON:AIR 강의 마케터의 역할" style="width:100%;height:100%;object-fit:cover;min-height:300px;display:block">
+    </div>
+  </div>
+</section>
+
+<!-- ── CERTIFICATIONS ── -->
+<section id="certs">
+  <p class="sec-label">CERTIFICATIONS</p>
+  <h2 class="sec-title">자격증으로<br>검증된 전문성</h2>
+  <p class="sec-sub">현장 경험에 공식 자격증이 더해졌습니다.</p>
+
+  <div class="cert-grid">
+    <div class="cert-item">
+      <div class="cert-icon">검색</div>
+      <h4>검색광고마케터 1급</h4>
+      <p>한국정보통신진흥협회(KAIT) 인증. 검색 광고 기획·운영·분석의 최상위 민간 자격.</p>
+      <p class="cert-date">취득일 · 2020년 12월 31일 · SMF-2003-001401</p>
+    </div>
+    <div class="cert-item">
+      <div class="cert-icon">SNS</div>
+      <h4>SNS광고마케터 1급</h4>
+      <p>한국정보통신진흥협회(KAIT) 인증. 소셜 광고 기획·운영 최상위 민간 자격.</p>
+      <p class="cert-date">취득일 · 2022년 09월 16일 · SNS-2202-000921</p>
+    </div>
+    <div class="cert-item">
+      <div class="cert-icon">GA</div>
+      <h4>구글 GAIQ 수료</h4>
+      <p>Google 공식 애널리틱스 자격. 데이터 기반 광고 성과 측정 및 분석 역량 공인.</p>
+      <p class="cert-date">Google Analytics Individual Qualification</p>
+    </div>
+  </div>
+
+  <!-- 자격증 사진 -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--border);border-top:none;margin-top:0">
+    <div style="border-right:1px solid var(--border);overflow:hidden">
+      <img src="cert_search.jpg" alt="검색광고마케터 1급 합격확인서" style="width:100%;display:block">
+    </div>
+    <div style="overflow:hidden">
+      <img src="cert_sns.jpg" alt="SNS광고마케터 1급 합격확인서" style="width:100%;display:block">
+    </div>
+  </div>
+</section>
+
+<!-- ── FREELANCE & PARKGOLF ── -->
+<section id="freelance">
+  <p class="sec-label">CURRENT WORK</p>
+  <h2 class="sec-title">지금도 현장에서<br>직접 성과를 만듭니다</h2>
+  <p class="sec-sub">정직원을 넘어 프리랜서로도 인정받았고, 독립 영업에서도 12억+ 매출을 직접 만들었습니다.</p>
+
+  <div class="work-grid">
+    <div class="work-item">
+      <span class="work-badge">FREELANCER · 현재진행중</span>
+      <h3>예지솔루션<br>유일한 공식 프리랜서</h3>
+      <p>8년간의 신뢰와 성과가 만들어낸 포지션입니다. 현재 예지솔루션에서 공식 인정한 단 한 명의 프리랜서로, 지금도 현장에서 광고 운영을 이어가고 있습니다.</p>
+      <div class="work-metrics">
+        <div class="work-metric">
+          <span class="work-metric-label">포지션</span>
+          <span class="work-metric-val">사내 유일 공식 프리랜서</span>
+        </div>
+        <div class="work-metric">
+          <span class="work-metric-label">운영 매체</span>
+          <span class="work-metric-val">네이버 · 카카오 · 쿠팡 · 지그재그</span>
+        </div>
+        <div class="work-metric">
+          <span class="work-metric-label">상태</span>
+          <span class="work-metric-val highlight">현재 활동중</span>
+        </div>
+      </div>
+    </div>
+    <div class="work-item">
+      <span class="work-badge">SALES · 독립 영업 성과</span>
+      <h3>파크골프용품 업체<br>영업 대행 · 매출 12억 5천+</h3>
+      <p>광고 운영을 넘어 영업 전략을 직접 설계하고 실행했습니다. 파크골프용품 업체의 전국 납품 영업을 대행하여 12억 5천만원 이상의 매출을 만들어냈습니다.</p>
+      <div class="work-metrics">
+        <div class="work-metric">
+          <span class="work-metric-label">총 영업 매출</span>
+          <span class="work-metric-val highlight">12억 5천만원+</span>
+        </div>
+        <div class="work-metric">
+          <span class="work-metric-label">업종</span>
+          <span class="work-metric-val">파크골프용품 · 전국 납품</span>
+        </div>
+        <div class="work-metric">
+          <span class="work-metric-label">역할</span>
+          <span class="work-metric-val">영업 전략 수립 및 직접 실행</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 파크골프 납품 목록 -->
+  <div style="margin-top:40px;border:1px solid var(--border);overflow:hidden">
+    <div style="background:var(--bg2);padding:16px 24px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between">
+      <p style="font-size:12px;font-weight:700;color:var(--black);letter-spacing:0.04em">아이디파크 영업 대행 계약 건 목록 (24년 6월~26년 4월)</p>
+      <p style="font-size:11px;color:var(--muted)">합계 · 1,257,818,424원</p>
+    </div>
+    <img src="parkgolf_list.png" alt="파크골프 납품 목록" style="width:100%;display:block">
+  </div>
+
+</section>
+
+<!-- ── RESUME ── -->
+<section id="resume" style="padding:96px 6%;border-bottom:1px solid var(--border)">
+  <p style="font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);margin-bottom:14px">RESUME</p>
+  <h2 style="font-family:'Noto Serif KR',serif;font-size:clamp(22px,3vw,36px);font-weight:700;color:var(--black);line-height:1.35;margin-bottom:56px">이  력  서</h2>
+  <div style="max-width:800px;margin:0 auto;border:1px solid #000">
+
+    <!-- 인적사항 -->
+    <div style="display:grid;grid-template-columns:80px 1fr 100px;border-bottom:1px solid #000">
+      <div style="padding:8px 10px;background:#f0f0f0;border-right:1px solid #000;font-size:13px;font-weight:700;color:#000;writing-mode:vertical-rl;text-orientation:upright;letter-spacing:4px;display:flex;align-items:center;justify-content:center">인적사항</div>
+      <div>
+        <div style="display:grid;grid-template-columns:100px 1fr;border-bottom:1px solid #000">
+          <div style="padding:7px 10px;background:#f0f0f0;border-right:1px solid #000;font-size:12px;font-weight:600;text-align:center">이름</div>
+          <div style="padding:7px 10px;font-size:12px">곽재훈</div>
+        </div>
+        <div style="display:grid;grid-template-columns:100px 1fr;border-bottom:1px solid #000">
+          <div style="padding:7px 10px;background:#f0f0f0;border-right:1px solid #000;font-size:12px;font-weight:600;text-align:center">생년월일</div>
+          <div style="padding:7px 10px;font-size:12px">1990.11.23 (만 35세)</div>
+        </div>
+        <div style="display:grid;grid-template-columns:100px 1fr;border-bottom:1px solid #000">
+          <div style="padding:7px 10px;background:#f0f0f0;border-right:1px solid #000;font-size:12px;font-weight:600;text-align:center">연락처</div>
+          <div style="padding:7px 10px;font-size:12px">010-5855-4076</div>
+        </div>
+        <div style="display:grid;grid-template-columns:100px 1fr">
+          <div style="padding:7px 10px;background:#f0f0f0;border-right:1px solid #000;font-size:12px;font-weight:600;text-align:center">이메일</div>
+          <div style="padding:7px 10px;font-size:12px">jhkwak11232@naver.com</div>
+        </div>
+      </div>
+      <!-- 증명사진 -->
+      <div style="border-left:1px solid #000;display:flex;align-items:center;justify-content:center;padding:6px">
+        <img src="profile_photo.png" alt="증명사진" style="width:88px;height:110px;object-fit:cover;object-position:center top;display:block">
+      </div>
+    </div>
+
+    <!-- 학력 -->
+    <div style="display:grid;grid-template-columns:80px 1fr;border-bottom:1px solid #000">
+      <div style="padding:8px 10px;background:#f0f0f0;border-right:1px solid #000;font-size:13px;font-weight:700;color:#000;writing-mode:vertical-rl;text-orientation:upright;letter-spacing:4px;display:flex;align-items:center;justify-content:center">학력</div>
+      <div>
+        <div style="display:grid;grid-template-columns:160px 1fr;border-bottom:1px solid #000">
+          <div style="padding:7px 10px;background:#f0f0f0;border-right:1px solid #000;font-size:12px;font-weight:600">재학기간</div>
+          <div style="padding:7px 10px;background:#f0f0f0;font-size:12px;font-weight:600">학교명</div>
+        </div>
+        <div style="display:grid;grid-template-columns:160px 1fr;border-bottom:1px solid #000">
+          <div style="padding:7px 10px;border-right:1px solid #000;font-size:12px">2013.09 ~ 2014.08</div>
+          <div style="padding:7px 10px;font-size:12px">호주 머큐리 칼리지 Mercury Colleges (중퇴)</div>
+        </div>
+        <div style="display:grid;grid-template-columns:160px 1fr;border-bottom:1px solid #000">
+          <div style="padding:7px 10px;border-right:1px solid #000;font-size:12px">2022.03 ~ 2026.02</div>
+          <div style="padding:7px 10px;font-size:12px">명지대 부동산대학원 석사 (졸업)</div>
+        </div>
+        <div style="display:grid;grid-template-columns:160px 1fr">
+          <div style="padding:7px 10px;border-right:1px solid #000;font-size:12px">2026.03 ~</div>
+          <div style="padding:7px 10px;font-size:12px">한동대 국제개발협력대학원 석사 (재학)</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 경력 -->
+    <div style="display:grid;grid-template-columns:80px 1fr;border-bottom:1px solid #000">
+      <div style="padding:8px 10px;background:#f0f0f0;border-right:1px solid #000;font-size:13px;font-weight:700;color:#000;writing-mode:vertical-rl;text-orientation:upright;letter-spacing:4px;display:flex;align-items:center;justify-content:center">경력</div>
+      <div>
+        <div style="display:grid;grid-template-columns:160px 160px 80px 1fr;border-bottom:1px solid #000">
+          <div style="padding:7px 10px;background:#f0f0f0;border-right:1px solid #000;font-size:12px;font-weight:600">회사명</div>
+          <div style="padding:7px 10px;background:#f0f0f0;border-right:1px solid #000;font-size:12px;font-weight:600">근무기간</div>
+          <div style="padding:7px 10px;background:#f0f0f0;border-right:1px solid #000;font-size:12px;font-weight:600">직위</div>
+          <div style="padding:7px 10px;background:#f0f0f0;font-size:12px;font-weight:600">담당업무</div>
+        </div>
+        <div style="display:grid;grid-template-columns:160px 160px 80px 1fr;border-bottom:1px solid #000">
+          <div style="padding:7px 10px;border-right:1px solid #000;font-size:12px">워킹홀리데이</div>
+          <div style="padding:7px 10px;border-right:1px solid #000;font-size:11px">2011.10~2011.12(홍콩)<br>2012.04~2013.03(호주)</div>
+          <div style="padding:7px 10px;border-right:1px solid #000;font-size:12px">슈퍼바이저</div>
+          <div style="padding:7px 10px;font-size:12px">한국어 티칭 / 농장·청소 등</div>
+        </div>
+        <div style="display:grid;grid-template-columns:160px 160px 80px 1fr;border-bottom:1px solid #000">
+          <div style="padding:7px 10px;border-right:1px solid #000;font-size:12px">LK산업개발 등 부동산업계</div>
+          <div style="padding:7px 10px;border-right:1px solid #000;font-size:12px">2015.01 ~ 2018.12</div>
+          <div style="padding:7px 10px;border-right:1px solid #000;font-size:12px">팀장</div>
+          <div style="padding:7px 10px;font-size:12px">부동산 중개 / 분양 기획 및 영업</div>
+        </div>
+        <div style="display:grid;grid-template-columns:160px 160px 80px 1fr;border-bottom:1px solid #000">
+          <div style="padding:7px 10px;border-right:1px solid #000;font-size:12px">예지솔루션</div>
+          <div style="padding:7px 10px;border-right:1px solid #000;font-size:12px">2019.01 ~ 2023.10</div>
+          <div style="padding:7px 10px;border-right:1px solid #000;font-size:12px">셀장</div>
+          <div style="padding:7px 10px;font-size:12px">광고 대행 (AE)</div>
+        </div>
+        <div style="display:grid;grid-template-columns:160px 160px 80px 1fr;border-bottom:1px solid #000">
+          <div style="padding:7px 10px;border-right:1px solid #000;font-size:12px">예지솔루션</div>
+          <div style="padding:7px 10px;border-right:1px solid #000;font-size:12px">2024.01 ~ 현재</div>
+          <div style="padding:7px 10px;border-right:1px solid #000;font-size:12px">프리랜서</div>
+          <div style="padding:7px 10px;font-size:12px">광고 대행 (AE)</div>
+        </div>
+        <div style="display:grid;grid-template-columns:160px 160px 80px 1fr">
+          <div style="padding:7px 10px;border-right:1px solid #000;font-size:12px">사과나무마케팅</div>
+          <div style="padding:7px 10px;border-right:1px solid #000;font-size:12px">2025.01 ~ 현재</div>
+          <div style="padding:7px 10px;border-right:1px solid #000;font-size:12px">대표</div>
+          <div style="padding:7px 10px;font-size:12px">광고 대행 (AE)</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 자격증 -->
+    <div style="display:grid;grid-template-columns:80px 1fr;border-bottom:1px solid #000">
+      <div style="padding:8px 10px;background:#f0f0f0;border-right:1px solid #000;font-size:13px;font-weight:700;color:#000;writing-mode:vertical-rl;text-orientation:upright;letter-spacing:4px;display:flex;align-items:center;justify-content:center">자격증</div>
+      <div>
+        <div style="display:grid;grid-template-columns:220px 130px 1fr;border-bottom:1px solid #000">
+          <div style="padding:7px 10px;background:#f0f0f0;border-right:1px solid #000;font-size:12px;font-weight:600">자격증명</div>
+          <div style="padding:7px 10px;background:#f0f0f0;border-right:1px solid #000;font-size:12px;font-weight:600">취득일자</div>
+          <div style="padding:7px 10px;background:#f0f0f0;font-size:12px;font-weight:600">발행기관</div>
+        </div>
+        <div style="display:grid;grid-template-columns:220px 130px 1fr;border-bottom:1px solid #000">
+          <div style="padding:7px 10px;border-right:1px solid #000;font-size:12px">검색광고마케터 1급</div>
+          <div style="padding:7px 10px;border-right:1px solid #000;font-size:12px">2020.12.31</div>
+          <div style="padding:7px 10px;font-size:12px">한국정보통신진흥협회</div>
+        </div>
+        <div style="display:grid;grid-template-columns:220px 130px 1fr">
+          <div style="padding:7px 10px;border-right:1px solid #000;font-size:12px">SNS광고마케터 1급</div>
+          <div style="padding:7px 10px;border-right:1px solid #000;font-size:12px">2022.09.16</div>
+          <div style="padding:7px 10px;font-size:12px">한국정보통신진흥협회</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 지원동기 -->
+    <div style="border-bottom:1px solid #000">
+      <div style="padding:8px 14px;background:#f0f0f0;border-bottom:1px solid #000;font-size:12px;font-weight:700">지원 동기</div>
+      <div style="padding:16px 20px">
+        <p style="font-size:12px;color:#000;line-height:1.9;word-break:keep-all;margin-bottom:16px">
+          <strong>1. 콘텐츠의 확장성</strong><br>
+          현재 진행중이던 아이디파크(파크골프업체)의 영업 대행은 올해 상반기까지만 진행하기로 되어 있고, 사실상 영업 자체는 모두 끝난 상황입니다. 곧 방학이 되면 개인 사업 확장 및 예지솔루션 업무에 집중하려고 생각 중에 있었습니다. 아이디파크에서는 수수료를 올려주는 조건으로 더 영업 대행을 해주길 원했으나, 제가 더 연장하지 않았습니다. 연장하지 않은 이유는 콘텐츠(제품/서비스)의 확장성의 한계 때문입니다. 파크골프 시장의 규모가 한정 되어있기 때문에 만약 국내 파크골프장 모든 업체에 납품을 하더라도 제가 가져갈 수 있는 수익은 제한적일 것입니다. 다만 다솜엑스와 협업을 진행 시, 레아 및 AI 관련 콘텐츠의 경우 기관을 상대한다면 납품 단위가 크고, 개인을 대상으로 마케팅을 할 때에도 수익의 확장성 측면에서 충분한 메리트가 있습니다. 또 수익 모델이 안정화되면 이후 AI 관련 상품/서비스는 다양하게 추가 및 확장 가능하기 때문에 제 마케팅 경험과 영업 능력을 통해 협업했을 때 좋은 성과를 만들어갈 수 있을 것으로 기대합니다.
+        </p>
+        <p style="font-size:12px;color:#000;line-height:1.9;word-break:keep-all">
+          <strong>2. 한동대 네트워크</strong><br>
+          서울에서 안정적인 수입처도 있었고, 타 대학원 합격도 했었습니다. 다만 제가 포항에 내려오며 서울에서의 좋은 조건들과 타대학원을 포기하면서까지 한동대 국제개발협력대학원에 진학한 이유는 바로 한동대 네트워크 때문입니다. Why not Change the World?라는 도전적인 비전을 가진 기독교인 인재들과 사업, 사역, 많은 프로젝트들을 장기적으로 함께하기 위한 전략적인 선택이었고 결단이었습니다. 이번에 AI선교학교를 통해 다솜엑스와 레아를 알게된 것도 저에게는 감사한 인연이고 기회입니다. 만약 협업할 수 있는 부분들이 있다면 좋은 시작이 되기를 희망하며, 혹시 이번에 기회가 되지 않아 같이 일을 하지 못하더라도 언제든지 좋은 기회에 협업할 수 있기를 소망합니다.
+        </p>
+      </div>
+    </div>
+
+    <!-- 근무조건 -->
+    <div>
+      <div style="padding:8px 14px;background:#f0f0f0;border-bottom:1px solid #000;font-size:12px;font-weight:700">근무 조건 및 급여</div>
+      <div style="padding:16px 20px">
+        <p style="font-size:12px;color:#000;line-height:1.9;word-break:keep-all">
+          저는 예지솔루션에서 정직원일 때는 기본급+인센티브 구조로 일을 했고, 현재 프리랜서로 전환 후에는 자유근무+기본급 없는 인센티브 구조로 일하고 있습니다. 아이디파크 영업 대행의 경우, 일부 출근/경비 지원(월세 일부/식비 등)+판매 건당 순수익의 1/n 구조로 영업 대행을 하였습니다. 현재 제가 학기 중에는 대학원 수업이 있기 때문에 일반적인 근무 형태는 어려운 상황입니다. 그렇기 때문에 만약 진행된다면 출퇴근 없이 마케팅 또는 영업에 대한 인센티브 구조로 일을 하는 것이 가능할 것 같습니다. 혹시 미팅 또는 업무에 있어서 소통이 필요한 부분이 정기적으로 필요하다면 수업 시간 외에는 일정 요일/시간을 출근하는 형태로 최소 경비+인센티브의 구조도 가능할 것 같습니다. 혹시 원하시는 내용이 있으시면, 저는 최대한 맞춰서 진행할 수 있을 것 같습니다. 감사합니다.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── CLOSING ── -->
+<section class="closing">
+  <div class="closing-left">
+    <h2>"광고와 영업, 두 가지 모두<br>현장에서 직접 증명했습니다."</h2>
+    <p>8년간 국내 최정상 광고 대행사에서 최고의 성과를 만들고, 독립적인 영업에서도 억 단위 매출을 달성했습니다. AI 교육 플랫폼에서도 같은 방식으로 — 데이터와 경험을 바탕으로 — 기여하겠습니다.</p>
+  </div>
+  <div class="closing-right">
+    <img src="hero.jpg" alt="곽재훈" class="closing-photo">
+  </div>
+</section>
+
+</body>
+</html>
