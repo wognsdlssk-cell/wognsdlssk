@@ -322,6 +322,51 @@ section{padding:96px 6%;border-bottom:1px solid var(--border)}
   .work-item{border-right:none;border-bottom:1px solid var(--border)}
   .closing{flex-direction:column}
 }
+@media(max-width:480px){
+  section{padding:48px 5%}
+  nav{padding:0 5%;height:52px}
+
+  /* 히어로 */
+  .hero-content{padding:36px 5%}
+  .hero-img{height:60vw;min-height:200px}
+  .hero-desc{font-size:14px}
+  .hstat-grid{grid-template-columns:1fr 1fr}
+  .hstat:nth-child(3){border-right:none}
+
+  /* 예지솔루션 */
+  .yeji-left{padding:28px 16px}
+  .yeji-left h3{font-size:17px}
+  .yeji-kpi-num{font-size:20px}
+  .yeji-badge{font-size:12px;padding:5px 11px}
+  .yeji-right{grid-template-columns:1fr}
+  .yeji-award-img{border-right:none !important}
+  .yeji-award-img img{height:200px}
+
+  /* 추가 수상 3칸→1칸 */
+  .extra-award-grid{grid-template-columns:1fr !important}
+  .extra-award-grid > div{border-right:none !important;border-bottom:1px solid var(--border)}
+  .extra-award-grid img{height:220px !important}
+
+  /* 성과 카드 */
+  .achieve-grid{grid-template-columns:1fr}
+  .achieve-card{border-right:none !important}
+  .achieve-num{font-size:26px}
+
+  /* 수상 사진 */
+  .awards-photo-grid{grid-template-columns:1fr 1fr}
+
+  /* 자격증 */
+  .cert-img-wrap img{height:180px}
+
+  /* 이력서 테이블 */
+  table{font-size:12px;display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  td,th{padding:8px 6px;word-break:keep-all;white-space:normal}
+
+  /* 클로징 */
+  .closing{flex-direction:column;gap:24px}
+  .closing-left p{font-size:13px}
+  .closing-quote{font-size:clamp(15px,4.5vw,22px)}
+}
 </style>
 </head>
 <body>
@@ -433,24 +478,28 @@ section{padding:96px 6%;border-bottom:1px solid var(--border)}
         <div class="yeji-award-caption">2024·2025 지그재그 프리미어 에이전시</div>
       </div>
       <div class="yeji-award-img">
-        <img src="award_ably.jpg" alt="에이블리 우수대행사 선정">
-        <div class="yeji-award-caption">에이블리 우수대행사 선정</div>
-      </div>
-      <div class="yeji-award-img">
         <img src="award_zigzag_perf.jpg" alt="지그재그 광고 효율 퍼포먼스 TOP5">
         <div class="yeji-award-caption">지그재그 광고 효율 퍼포먼스 TOP5</div>
+      </div>
+      <div class="yeji-award-img">
+        <img src="award_best_promotion.jpg" alt="지그재그 신규 광고주 케어 부문 TOP3">
+        <div class="yeji-award-caption">지그재그 신규 광고주 케어 부문 TOP3</div>
       </div>
     </div>
   </div>
 
   <!-- 추가 수상 이미지들 -->
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--border);border-top:none">
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;border:1px solid var(--border);border-top:none" class="extra-award-grid">
     <div style="border-right:1px solid var(--border);overflow:hidden">
-      <img src="award_zigzag_care.png" alt="지그재그 신규광고주 케어 TOP3" style="width:100%;height:300px;object-fit:cover;display:block">
+      <img src="award_zigzag_care.png" alt="지그재그 신규광고주 케어 TOP3" style="width:100%;height:420px;object-fit:cover;display:block">
       <div class="yeji-award-caption">지그재그 신규 광고주 케어 부문 TOP3</div>
     </div>
+    <div style="border-right:1px solid var(--border);overflow:hidden">
+      <img src="award_ably.jpg" alt="에이블리 우수대행사 선정" style="width:100%;height:420px;object-fit:cover;display:block">
+      <div class="yeji-award-caption">에이블리 우수대행사 선정</div>
+    </div>
     <div style="overflow:hidden">
-      <img src="award_ably2026.png" alt="2026 에이블리 우수대행사" style="width:100%;height:300px;object-fit:cover;display:block">
+      <img src="award_ably2026.png" alt="2026 에이블리 우수대행사" style="width:100%;height:420px;object-fit:cover;display:block">
       <div class="yeji-award-caption">2026 에이블리 우수대행사 선정</div>
     </div>
   </div>
