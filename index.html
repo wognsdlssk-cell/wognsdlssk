@@ -611,14 +611,26 @@ section{padding:96px 6%;border-bottom:1px solid var(--border)}
   </div>
 
   <!-- ON:AIR 강의 -->
-  <div style="margin-top:40px;border:1px solid var(--border)">
-    <div style="overflow:hidden">
-      <img src="onair.png" alt="ON:AIR 강의 마케터의 역할" style="width:100%;height:420px;object-fit:cover;object-position:center top;display:block">
-    </div>
-    <div style="padding:28px 36px;border-top:1px solid var(--border)">
-      <p style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:10px">CONTENT · EDUCATION</p>
-      <h3 style="font-family:'Noto Serif KR',serif;font-size:20px;font-weight:700;color:var(--black);margin-bottom:10px;line-height:1.4">사내 교육 콘텐츠 제작 및 강의 진행</h3>
+  <style>
+    .onair-wrap{margin-top:40px;display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--border)}
+    .onair-text{padding:36px 36px;display:flex;flex-direction:column;justify-content:center;border-right:1px solid var(--border)}
+    .onair-img{overflow:hidden}
+    .onair-img img{width:100%;height:100%;object-fit:cover;min-height:300px;display:block}
+    @media(max-width:480px){
+      .onair-wrap{grid-template-columns:1fr}
+      .onair-text{border-right:none;border-top:1px solid var(--border);order:2;padding:24px 20px}
+      .onair-img{order:1}
+      .onair-img img{min-height:220px;height:260px}
+    }
+  </style>
+  <div class="onair-wrap">
+    <div class="onair-text">
+      <p style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:12px">CONTENT · EDUCATION</p>
+      <h3 style="font-family:'Noto Serif KR',serif;font-size:20px;font-weight:700;color:var(--black);margin-bottom:12px;line-height:1.4">사내 교육 콘텐츠 제작<br>및 강의 진행</h3>
       <p style="font-size:13px;color:var(--mid);line-height:1.8;word-break:keep-all">영업부 셀장 및 주요 TF팀 팀장으로 참여.</p>
+    </div>
+    <div class="onair-img">
+      <img src="onair.png" alt="ON:AIR 강의 마케터의 역할">
     </div>
   </div>
 </section>
@@ -724,135 +736,193 @@ section{padding:96px 6%;border-bottom:1px solid var(--border)}
   <p style="font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);margin-bottom:14px">RESUME</p>
   <h2 style="font-family:'Noto Serif KR',serif;font-size:clamp(22px,3vw,36px);font-weight:700;color:var(--black);line-height:1.35;margin-bottom:56px">이  력  서</h2>
   <style>
+    /* ── PC 이력서 테이블 ── */
     .resume-wrap{max-width:800px;margin:0 auto;border:1px solid #000}
-    .resume-section{display:grid;grid-template-columns:60px 1fr;border-bottom:1px solid #000}
-    .resume-section:last-child{border-bottom:none}
-    .resume-label{padding:8px 6px;background:#f0f0f0;border-right:1px solid #000;font-size:12px;font-weight:700;writing-mode:vertical-rl;text-orientation:upright;letter-spacing:4px;display:flex;align-items:center;justify-content:center}
-    .resume-row{display:grid;grid-template-columns:90px 1fr;border-bottom:1px solid #000}
-    .resume-row:last-child{border-bottom:none}
-    .resume-row-head{padding:7px 8px;background:#f0f0f0;border-right:1px solid #000;font-size:11px;font-weight:600;text-align:center;display:flex;align-items:center;justify-content:center}
-    .resume-row-body{padding:7px 8px;font-size:12px;line-height:1.6;word-break:keep-all}
-    .resume-career-row{display:grid;grid-template-columns:1fr;border-bottom:1px solid #000;padding:10px 12px;gap:2px}
-    .resume-career-row:last-child{border-bottom:none}
-    .resume-career-company{font-size:13px;font-weight:700;color:#000}
-    .resume-career-period{font-size:11px;color:#666;margin-top:2px}
-    .resume-career-role{font-size:12px;color:#333;margin-top:3px}
-    .resume-cert-row{display:grid;grid-template-columns:1fr;border-bottom:1px solid #000;padding:10px 12px;gap:2px}
-    .resume-cert-row:last-child{border-bottom:none}
-    .resume-personal-wrap{display:flex;gap:0}
-    .resume-personal-info{flex:1}
-    .resume-photo{width:80px;border-left:1px solid #000;display:flex;align-items:center;justify-content:center;padding:6px;flex-shrink:0}
-    .resume-text-section{border-bottom:1px solid #000}
-    .resume-text-section:last-child{border-bottom:none}
-    .resume-text-head{padding:8px 14px;background:#f0f0f0;border-bottom:1px solid #000;font-size:12px;font-weight:700}
-    .resume-text-body{padding:14px 16px;font-size:12px;color:#000;line-height:1.9;word-break:keep-all}
+    .rs-row-label{padding:8px 10px;background:#f0f0f0;border-right:1px solid #000;font-size:13px;font-weight:700;writing-mode:vertical-rl;text-orientation:upright;letter-spacing:4px;display:flex;align-items:center;justify-content:center}
+    /* 모바일 카드형 */
+    .resume-mobile{display:none}
     @media(max-width:480px){
-      .resume-section{grid-template-columns:36px 1fr}
-      .resume-label{font-size:10px;letter-spacing:2px;padding:6px 4px}
-      .resume-row{grid-template-columns:72px 1fr}
-      .resume-photo{width:68px}
-      .resume-photo img{width:58px !important;height:76px !important}
+      .resume-wrap{display:none}
+      .resume-mobile{display:block;border:1px solid #000;max-width:100%}
+      .rm-section{border-bottom:1px solid #000}
+      .rm-section:last-child{border-bottom:none}
+      .rm-section-head{padding:8px 12px;background:#f0f0f0;border-bottom:1px solid #000;font-size:12px;font-weight:700}
+      .rm-personal{display:flex}
+      .rm-personal-info{flex:1}
+      .rm-personal-photo{width:72px;border-left:1px solid #000;display:flex;align-items:center;justify-content:center;padding:6px;flex-shrink:0}
+      .rm-row{display:grid;grid-template-columns:72px 1fr;border-bottom:1px solid #000}
+      .rm-row:last-child{border-bottom:none}
+      .rm-row-head{padding:7px 8px;background:#f0f0f0;border-right:1px solid #000;font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center;text-align:center}
+      .rm-row-body{padding:7px 8px;font-size:12px;line-height:1.5;word-break:keep-all}
+      .rm-card{padding:10px 12px;border-bottom:1px solid #000}
+      .rm-card:last-child{border-bottom:none}
+      .rm-card-company{font-size:13px;font-weight:700;color:#000}
+      .rm-card-period{font-size:11px;color:#666;margin-top:2px}
+      .rm-card-role{font-size:12px;color:#333;margin-top:3px}
+      .rm-text{padding:12px 14px;font-size:12px;color:#000;line-height:1.9;word-break:keep-all}
     }
   </style>
+
+  <!-- PC용 원래 테이블 -->
   <div class="resume-wrap">
-
     <!-- 인적사항 -->
-    <div class="resume-section">
-      <div class="resume-label">인적사항</div>
+    <div style="display:grid;grid-template-columns:80px 1fr 100px;border-bottom:1px solid #000">
+      <div class="rs-row-label">인적사항</div>
       <div>
-        <div class="resume-personal-wrap">
-          <div class="resume-personal-info">
-            <div class="resume-row"><div class="resume-row-head">이름</div><div class="resume-row-body">곽재훈</div></div>
-            <div class="resume-row"><div class="resume-row-head">생년월일</div><div class="resume-row-body">1990.11.23 (만 35세)</div></div>
-            <div class="resume-row"><div class="resume-row-head">연락처</div><div class="resume-row-body">010-5855-4076</div></div>
-            <div class="resume-row" style="border-bottom:none"><div class="resume-row-head">이메일</div><div class="resume-row-body">jhkwak11232@naver.com</div></div>
-          </div>
-          <div class="resume-photo">
-            <img src="profile_photo.png" alt="증명사진" style="width:70px;height:90px;object-fit:cover;object-position:center top;display:block">
-          </div>
+        <div style="display:grid;grid-template-columns:100px 1fr;border-bottom:1px solid #000">
+          <div style="padding:7px 10px;background:#f0f0f0;border-right:1px solid #000;font-size:12px;font-weight:600;text-align:center">이름</div>
+          <div style="padding:7px 10px;font-size:12px">곽재훈</div>
+        </div>
+        <div style="display:grid;grid-template-columns:100px 1fr;border-bottom:1px solid #000">
+          <div style="padding:7px 10px;background:#f0f0f0;border-right:1px solid #000;font-size:12px;font-weight:600;text-align:center">생년월일</div>
+          <div style="padding:7px 10px;font-size:12px">1990.11.23 (만 35세)</div>
+        </div>
+        <div style="display:grid;grid-template-columns:100px 1fr;border-bottom:1px solid #000">
+          <div style="padding:7px 10px;background:#f0f0f0;border-right:1px solid #000;font-size:12px;font-weight:600;text-align:center">연락처</div>
+          <div style="padding:7px 10px;font-size:12px">010-5855-4076</div>
+        </div>
+        <div style="display:grid;grid-template-columns:100px 1fr">
+          <div style="padding:7px 10px;background:#f0f0f0;border-right:1px solid #000;font-size:12px;font-weight:600;text-align:center">이메일</div>
+          <div style="padding:7px 10px;font-size:12px">jhkwak11232@naver.com</div>
         </div>
       </div>
+      <div style="border-left:1px solid #000;display:flex;align-items:center;justify-content:center;padding:6px">
+        <img src="profile_photo.png" alt="증명사진" style="width:88px;height:110px;object-fit:cover;object-position:center top;display:block">
+      </div>
     </div>
-
     <!-- 학력 -->
-    <div class="resume-section">
-      <div class="resume-label">학력</div>
+    <div style="display:grid;grid-template-columns:80px 1fr;border-bottom:1px solid #000">
+      <div class="rs-row-label">학력</div>
       <div>
-        <div class="resume-career-row" style="background:#f0f0f0"><span style="font-size:11px;font-weight:700">재학기간 / 학교명</span></div>
-        <div class="resume-career-row">
-          <div class="resume-career-period">2013.09 ~ 2014.08</div>
-          <div class="resume-career-company">호주 머큐리 칼리지 (Mercury Colleges)</div>
-          <div class="resume-career-role">비즈니스 과정 (중퇴)</div>
+        <div style="display:grid;grid-template-columns:160px 1fr;border-bottom:1px solid #000">
+          <div style="padding:7px 10px;background:#f0f0f0;border-right:1px solid #000;font-size:12px;font-weight:600">재학기간</div>
+          <div style="padding:7px 10px;background:#f0f0f0;font-size:12px;font-weight:600">학교명</div>
         </div>
-        <div class="resume-career-row">
-          <div class="resume-career-period">2015.03 ~ 2020.08</div>
-          <div class="resume-career-company">한양 사이버대</div>
-          <div class="resume-career-role">부동산학과 (졸업)</div>
+        <div style="display:grid;grid-template-columns:160px 1fr;border-bottom:1px solid #000">
+          <div style="padding:7px 10px;border-right:1px solid #000;font-size:12px">2013.09 ~ 2014.08</div>
+          <div style="padding:7px 10px;font-size:12px">호주 머큐리 칼리지 (Mercury Colleges) 비즈니스 과정 (중퇴)</div>
         </div>
-        <div class="resume-career-row">
-          <div class="resume-career-period">2022.03 ~ 2026.02</div>
-          <div class="resume-career-company">명지대 부동산대학원</div>
-          <div class="resume-career-role">석사 (졸업)</div>
+        <div style="display:grid;grid-template-columns:160px 1fr;border-bottom:1px solid #000">
+          <div style="padding:7px 10px;border-right:1px solid #000;font-size:12px">2015.03 ~ 2020.08</div>
+          <div style="padding:7px 10px;font-size:12px">한양 사이버대 부동산학과 (졸업)</div>
         </div>
-        <div class="resume-career-row" style="border-bottom:none">
-          <div class="resume-career-period">2026.03 ~</div>
-          <div class="resume-career-company">한동대 국제개발협력대학원</div>
-          <div class="resume-career-role">석사 (재학)</div>
+        <div style="display:grid;grid-template-columns:160px 1fr;border-bottom:1px solid #000">
+          <div style="padding:7px 10px;border-right:1px solid #000;font-size:12px">2022.03 ~ 2026.02</div>
+          <div style="padding:7px 10px;font-size:12px">명지대 부동산대학원 석사 (졸업)</div>
+        </div>
+        <div style="display:grid;grid-template-columns:160px 1fr">
+          <div style="padding:7px 10px;border-right:1px solid #000;font-size:12px">2026.03 ~</div>
+          <div style="padding:7px 10px;font-size:12px">한동대 국제개발협력대학원 석사 (재학)</div>
         </div>
       </div>
     </div>
-
     <!-- 경력 -->
-    <div class="resume-section">
-      <div class="resume-label">경력</div>
+    <div style="display:grid;grid-template-columns:80px 1fr;border-bottom:1px solid #000">
+      <div class="rs-row-label">경력</div>
       <div>
-        <div class="resume-career-row" style="background:#f0f0f0"><span style="font-size:11px;font-weight:700">회사명 / 근무기간 / 직위 / 담당업무</span></div>
-        <div class="resume-career-row">
-          <div class="resume-career-company">워킹홀리데이/학생비자</div>
-          <div class="resume-career-period">2011.10~2011.12(홍콩) · 2012.04~2014.08(호주)</div>
-          <div class="resume-career-role">슈퍼바이저 · 한국어 티칭 / 농장 근무, 청소업체 등</div>
+        <div style="display:grid;grid-template-columns:160px 160px 80px 1fr;border-bottom:1px solid #000">
+          <div style="padding:7px 10px;background:#f0f0f0;border-right:1px solid #000;font-size:12px;font-weight:600">회사명</div>
+          <div style="padding:7px 10px;background:#f0f0f0;border-right:1px solid #000;font-size:12px;font-weight:600">근무기간</div>
+          <div style="padding:7px 10px;background:#f0f0f0;border-right:1px solid #000;font-size:12px;font-weight:600">직위</div>
+          <div style="padding:7px 10px;background:#f0f0f0;font-size:12px;font-weight:600">담당업무</div>
         </div>
-        <div class="resume-career-row">
-          <div class="resume-career-company">부동산 실무 多</div>
-          <div class="resume-career-period">2015.01 ~ 2016.10</div>
-          <div class="resume-career-role">사원 · 부동산 중개 / 분양 기획 및 영업</div>
+        <div style="display:grid;grid-template-columns:160px 160px 80px 1fr;border-bottom:1px solid #000">
+          <div style="padding:7px 10px;border-right:1px solid #000;font-size:12px">워킹홀리데이/학생비자</div>
+          <div style="padding:7px 10px;border-right:1px solid #000;font-size:11px">2011.10~2011.12(홍콩)<br>2012.04~2014.08(호주)</div>
+          <div style="padding:7px 10px;border-right:1px solid #000;font-size:12px">슈퍼바이저</div>
+          <div style="padding:7px 10px;font-size:12px">한국어 티칭 / 농장 근무, 청소업체 등</div>
         </div>
-        <div class="resume-career-row">
-          <div class="resume-career-company">LK산업개발</div>
-          <div class="resume-career-period">2016.11 ~ 2018.02</div>
-          <div class="resume-career-role">팀장 · 분양 기획 및 영업</div>
+        <div style="display:grid;grid-template-columns:160px 160px 80px 1fr;border-bottom:1px solid #000">
+          <div style="padding:7px 10px;border-right:1px solid #000;font-size:12px">부동산 실무 多</div>
+          <div style="padding:7px 10px;border-right:1px solid #000;font-size:12px">2015.01 ~ 2016.10</div>
+          <div style="padding:7px 10px;border-right:1px solid #000;font-size:12px">사원</div>
+          <div style="padding:7px 10px;font-size:12px">부동산 중개 / 분양 기획 및 영업</div>
         </div>
-        <div class="resume-career-row">
-          <div class="resume-career-company">예지솔루션</div>
-          <div class="resume-career-period">2019.01 ~ 2023.10</div>
-          <div class="resume-career-role">셀장 · 광고 대행 (AE)</div>
+        <div style="display:grid;grid-template-columns:160px 160px 80px 1fr;border-bottom:1px solid #000">
+          <div style="padding:7px 10px;border-right:1px solid #000;font-size:12px">LK산업개발</div>
+          <div style="padding:7px 10px;border-right:1px solid #000;font-size:12px">2016.11 ~ 2018.02</div>
+          <div style="padding:7px 10px;border-right:1px solid #000;font-size:12px">팀장</div>
+          <div style="padding:7px 10px;font-size:12px">분양 기획 및 영업</div>
         </div>
-        <div class="resume-career-row">
-          <div class="resume-career-company">예지솔루션</div>
-          <div class="resume-career-period">2024.01 ~ 현재</div>
-          <div class="resume-career-role">프리랜서 · 광고 대행 (AE)</div>
+        <div style="display:grid;grid-template-columns:160px 160px 80px 1fr;border-bottom:1px solid #000">
+          <div style="padding:7px 10px;border-right:1px solid #000;font-size:12px">예지솔루션</div>
+          <div style="padding:7px 10px;border-right:1px solid #000;font-size:12px">2019.01 ~ 2023.10</div>
+          <div style="padding:7px 10px;border-right:1px solid #000;font-size:12px">셀장</div>
+          <div style="padding:7px 10px;font-size:12px">광고 대행 (AE)</div>
         </div>
-        <div class="resume-career-row" style="border-bottom:none">
-          <div class="resume-career-company">사과나무마케팅</div>
-          <div class="resume-career-period">2025.01 ~ 현재</div>
-          <div class="resume-career-role">대표 · 광고 대행 (AE)</div>
+        <div style="display:grid;grid-template-columns:160px 160px 80px 1fr;border-bottom:1px solid #000">
+          <div style="padding:7px 10px;border-right:1px solid #000;font-size:12px">예지솔루션</div>
+          <div style="padding:7px 10px;border-right:1px solid #000;font-size:12px">2024.01 ~ 현재</div>
+          <div style="padding:7px 10px;border-right:1px solid #000;font-size:12px">프리랜서</div>
+          <div style="padding:7px 10px;font-size:12px">광고 대행 (AE)</div>
+        </div>
+        <div style="display:grid;grid-template-columns:160px 160px 80px 1fr">
+          <div style="padding:7px 10px;border-right:1px solid #000;font-size:12px">사과나무마케팅</div>
+          <div style="padding:7px 10px;border-right:1px solid #000;font-size:12px">2025.01 ~ 현재</div>
+          <div style="padding:7px 10px;border-right:1px solid #000;font-size:12px">대표</div>
+          <div style="padding:7px 10px;font-size:12px">광고 대행 (AE)</div>
         </div>
       </div>
     </div>
-
     <!-- 자격증 -->
-    <div class="resume-section" style="border-bottom:1px solid #000">
-      <div class="resume-label">자격증</div>
+    <div style="display:grid;grid-template-columns:80px 1fr;border-bottom:1px solid #000">
+      <div class="rs-row-label">자격증</div>
       <div>
-        <div class="resume-cert-row">
-          <div class="resume-career-company">검색광고마케터 1급</div>
-          <div class="resume-career-period">2020.12.31 · 한국정보통신진흥협회</div>
+        <div style="display:grid;grid-template-columns:220px 130px 1fr;border-bottom:1px solid #000">
+          <div style="padding:7px 10px;background:#f0f0f0;border-right:1px solid #000;font-size:12px;font-weight:600">자격증명</div>
+          <div style="padding:7px 10px;background:#f0f0f0;border-right:1px solid #000;font-size:12px;font-weight:600">취득일자</div>
+          <div style="padding:7px 10px;background:#f0f0f0;font-size:12px;font-weight:600">발행기관</div>
         </div>
-        <div class="resume-cert-row" style="border-bottom:none">
-          <div class="resume-career-company">SNS광고마케터 1급</div>
-          <div class="resume-career-period">2022.09.16 · 한국정보통신진흥협회</div>
+        <div style="display:grid;grid-template-columns:220px 130px 1fr;border-bottom:1px solid #000">
+          <div style="padding:7px 10px;border-right:1px solid #000;font-size:12px">검색광고마케터 1급</div>
+          <div style="padding:7px 10px;border-right:1px solid #000;font-size:12px">2020.12.31</div>
+          <div style="padding:7px 10px;font-size:12px">한국정보통신진흥협회</div>
+        </div>
+        <div style="display:grid;grid-template-columns:220px 130px 1fr">
+          <div style="padding:7px 10px;border-right:1px solid #000;font-size:12px">SNS광고마케터 1급</div>
+          <div style="padding:7px 10px;border-right:1px solid #000;font-size:12px">2022.09.16</div>
+          <div style="padding:7px 10px;font-size:12px">한국정보통신진흥협회</div>
         </div>
       </div>
+    </div>
+  </div>
+
+  <!-- 모바일용 카드형 -->
+  <div class="resume-mobile">
+    <div class="rm-section">
+      <div class="rm-section-head">인적사항</div>
+      <div class="rm-personal">
+        <div class="rm-personal-info">
+          <div class="rm-row"><div class="rm-row-head">이름</div><div class="rm-row-body">곽재훈</div></div>
+          <div class="rm-row"><div class="rm-row-head">생년월일</div><div class="rm-row-body">1990.11.23 (만 35세)</div></div>
+          <div class="rm-row"><div class="rm-row-head">연락처</div><div class="rm-row-body">010-5855-4076</div></div>
+          <div class="rm-row" style="border-bottom:none"><div class="rm-row-head">이메일</div><div class="rm-row-body">jhkwak11232@naver.com</div></div>
+        </div>
+        <div class="rm-personal-photo">
+          <img src="profile_photo.png" alt="증명사진" style="width:58px;height:76px;object-fit:cover;object-position:center top;display:block">
+        </div>
+      </div>
+    </div>
+    <div class="rm-section">
+      <div class="rm-section-head">학력</div>
+      <div class="rm-card"><div class="rm-card-period">2013.09 ~ 2014.08</div><div class="rm-card-company">호주 머큐리 칼리지 (Mercury Colleges)</div><div class="rm-card-role">비즈니스 과정 (중퇴)</div></div>
+      <div class="rm-card"><div class="rm-card-period">2015.03 ~ 2020.08</div><div class="rm-card-company">한양 사이버대</div><div class="rm-card-role">부동산학과 (졸업)</div></div>
+      <div class="rm-card"><div class="rm-card-period">2022.03 ~ 2026.02</div><div class="rm-card-company">명지대 부동산대학원</div><div class="rm-card-role">석사 (졸업)</div></div>
+      <div class="rm-card" style="border-bottom:none"><div class="rm-card-period">2026.03 ~</div><div class="rm-card-company">한동대 국제개발협력대학원</div><div class="rm-card-role">석사 (재학)</div></div>
+    </div>
+    <div class="rm-section">
+      <div class="rm-section-head">경력</div>
+      <div class="rm-card"><div class="rm-card-company">워킹홀리데이/학생비자</div><div class="rm-card-period">2011.10~2011.12(홍콩) · 2012.04~2014.08(호주)</div><div class="rm-card-role">슈퍼바이저 · 한국어 티칭 / 농장 근무, 청소업체 등</div></div>
+      <div class="rm-card"><div class="rm-card-company">부동산 실무 多</div><div class="rm-card-period">2015.01 ~ 2016.10</div><div class="rm-card-role">사원 · 부동산 중개 / 분양 기획 및 영업</div></div>
+      <div class="rm-card"><div class="rm-card-company">LK산업개발</div><div class="rm-card-period">2016.11 ~ 2018.02</div><div class="rm-card-role">팀장 · 분양 기획 및 영업</div></div>
+      <div class="rm-card"><div class="rm-card-company">예지솔루션</div><div class="rm-card-period">2019.01 ~ 2023.10</div><div class="rm-card-role">셀장 · 광고 대행 (AE)</div></div>
+      <div class="rm-card"><div class="rm-card-company">예지솔루션</div><div class="rm-card-period">2024.01 ~ 현재</div><div class="rm-card-role">프리랜서 · 광고 대행 (AE)</div></div>
+      <div class="rm-card" style="border-bottom:none"><div class="rm-card-company">사과나무마케팅</div><div class="rm-card-period">2025.01 ~ 현재</div><div class="rm-card-role">대표 · 광고 대행 (AE)</div></div>
+    </div>
+    <div class="rm-section">
+      <div class="rm-section-head">자격증</div>
+      <div class="rm-card"><div class="rm-card-company">검색광고마케터 1급</div><div class="rm-card-period">2020.12.31 · 한국정보통신진흥협회</div></div>
+      <div class="rm-card" style="border-bottom:none"><div class="rm-card-company">SNS광고마케터 1급</div><div class="rm-card-period">2022.09.16 · 한국정보통신진흥협회</div></div>
     </div>
 
     <!-- 지원동기 -->
