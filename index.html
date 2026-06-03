@@ -362,6 +362,14 @@ section{padding:96px 6%;border-bottom:1px solid var(--border)}
   table{font-size:12px;display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}
   td,th{padding:8px 6px;word-break:keep-all;white-space:normal}
 
+  /* 유튜브 채널 - 3컬럼→2컬럼 */
+  #yt-channels > div { grid-template-columns: repeat(2,1fr) !important; }
+  #yt-channels [style*="border-right:1px solid var(--border);border-bottom"] { border-right: none !important; }
+  #yt-channels [style*="padding:36px 20px 28px"] { padding: 20px 10px 16px !important; }
+  #yt-channels [style*="width:80px;height:80px"] { width: 56px !important; height: 56px !important; margin-bottom: 10px !important; }
+  #yt-channels p[style*="font-size:15px"] { font-size: 12px !important; word-break: keep-all !important; margin-bottom: 6px !important; }
+  #yt-channels a { font-size: 11px !important; }
+
   /* 클로징 */
   .closing{flex-direction:column;gap:24px}
   .closing-left p{font-size:13px}
